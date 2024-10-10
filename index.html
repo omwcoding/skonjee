@@ -1,1 +1,278 @@
-<h1>Ciao</h1>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ever Dream This Friend?</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+    img {
+      width: 200px;
+      border-radius: 50%;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-top: 20px;
+    }
+    p {
+      font-size: 1rem;
+      color: #333;
+    }
+    .button-container {
+      margin-top: 20px;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .hidden-section {
+      display: none;
+      margin-top: 30px;
+    }
+    .friend-card {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      padding: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .friend-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+    .friend-card .story {
+      text-align: left;
+    }
+    .gallery-section {
+      margin-top: 30px;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .gallery img {
+      width: 150px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .image-popup {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-image {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 0;
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <audio id="background-audio" autoplay loop>
+    <source src="audio/thatmf.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <img src="thisman.jpg" alt="thisman">
+    <h1>Hai mai sognato quest'uomo?</h1>
+    <p>
+        Nell'ottobre 1998, a Bari, la paziente di un noto psichiatra disegna il volto di un uomo che appare ripetutamente nei suoi sogni. In più di un'occasione, quell'uomo le ha dato consigli sulla sua vita privata. La donna giura di non aver mai incontrato quell'uomo nella sua vita reale.
+        Quel ritratto rimane dimenticato sulla scrivania dello psichiatra per alcuni giorni, finché un giorno un altro paziente riconosce quel volto e afferma che quell'uomo lo ha spesso visitato nei suoi sogni. Anche lui sostiene di non averlo mai visto nella vita di tutti i giorni.
+        Lo psichiatra decide quindi di inviare il ritratto ad alcuni suoi colleghi che hanno pazienti con sogni ricorrenti. Nel giro di pochi mesi, quattro pazienti riconoscono quell'uomo come una presenza frequente nei propri sogni. Tutti i pazienti si riferiscono a lui come <strong>SKONJEE</strong>.
+        Dal 15 ottobre 1998 fino ad oggi, almeno <del>2.000</del> 100.000 persone hanno dichiarato di aver visto quest'uomo nei loro sogni, in molte città in tutto il mondo: Bari, Matera, Parigi, (aggiungere città) ecc.
+        Al momento non esiste alcuna relazione accertata o tratto comune tra le persone che hanno sognato quest'uomo. Inoltre, nessun uomo vivente è mai stato riconosciuto come somigliante all'uomo del ritratto dalle persone che lo hanno visto nei loro sogni.
+        <br>
+        <br>
+        <!--
+        L'obiettivo di questo sito è:
+        <ul>
+            <li>aiutare coloro che hanno visto quest'uomo nei loro sogni e promuovere la comunicazione tra di loro;</li>
+            <li>comprendere chi sia quest'uomo e perché appare in una varietà apparentemente casuale di situazioni nei sogni di soggetti umani così diversi.</li>
+        </ul>
+        -->
+        Hai sognato anche tu quest'uomo?
+    </p>
+    <div class="gallery-section">
+      <h2>Magari queste foto possono aiutarti a ricordare...</h2>
+      <div class="gallery">
+        <img src="skonjee1.jpg" alt="Foto 1">
+        <img src="skonjee2.jpg" alt="Foto 2">
+        <img src="skonjee3.jpg" alt="Foto 3">
+        <img src="skonjee4.jpg" alt="Foto 4">
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="button" id="show-stories-button">Scopri gli avvistamenti</button>
+    </div>
+  </div>
+
+  <div class="hidden-section" id="stories-section">
+    <div class="friend-card">
+      <img src="Claudia.jpg">
+      <div class="story">
+        <h3>Claudia</h3>
+        <p>...</p>
+      </div>
+  </div>
+    <div class="friend-card">
+      <img src="omar.png">
+      <div class="story">
+        <h3>Omar</h3>
+        <p>Ho sognato tantissime volte quest'uomo negli ultimi anni, ma se dovessi cercare il primo ricordo legato a lui sarebbe un'ubriacatura bella pesante a L'Albero Che.</p>
+      </div>
+    </div>
+    <div class="friend-card">
+      <img src="giorgia.png">
+      <div class="story">
+        <h3>Giorgia</h3>
+        <p>...</p>
+      </div>
+    </div>
+    <div class="friend-card">
+      <img src="nicolo.jpg">
+      <div class="story">
+        <h3>Nicolò</h3>
+        <p>...</p>
+      </div>
+    </div>
+    <div class="friend-card">
+      <img src="edoardo.jpg">
+      <div class="story">
+        <h3>Edoardo</h3>
+        <p>...</p>
+      </div>
+    </div>
+    <div class="friend-card">
+      <img src="annalisa.jpg">
+      <div class="story">
+        <h3>Annalisa</h3>
+        <p>Ho sognato quest'uomo per la prima volta esattamente sette anni fa. Camminavo fra i corridoi del dipartimento, ci siamo incrociati e abbiamo parlato, siamo diventati subito amici. Da quel giorno non l'ho più dimenticato.</p>
+      </div>
+    </div>
+    <div class="friend-card">
+      <img src="ibrahim.jpg">
+      <div class="story">
+        <h3>Ibrahim</h3>
+        <p>...</p>
+      </div>
+    </div>
+    <div class="friend-card">
+        <img src="gnox.jpg">
+        <div class="story">
+            <h3>Daniele G.</h3>
+            <p>...</p>
+        </div>
+    </div>
+    <div class="friend-card">
+        <img src="trotta.jpg">
+        <div class="story">
+            <h3>Daniele T.</h3>
+            <p>...</p>
+        </div>
+    </div>
+    <div class="friend-card">
+        <img src="andrea.jpg">
+        <div class="story">
+            <h3>Andrea</h3>
+            <p>...</p>
+        </div>
+    </div>
+    <div class="friend-card">
+        <img src="claudio.jpg">
+        <div class="story">
+            <h3>Claudio</h3>
+            <p>...</p>
+        </div>
+    </div>
+    <div class="friend-card">
+        <img src="marco.jpg">
+        <div class="story">
+            <h3>Marco</h3>
+            <p>...</p>
+        </div>
+  </div>
+
+  <div id="image-popup" class="image-popup" onclick="closePopup()">
+    <span class="close">&times;</span>
+    <img class="popup-image" src="" alt="">
+  </div>
+
+  <script>
+    function openPopup(imageSrc) {
+      const popup = document.getElementById('image-popup');
+      const popupImage = document.querySelector('.popup-image');
+      popupImage.src = imageSrc;
+      popup.style.display = 'flex';
+    }
+
+    function closePopup() {
+      const popup = document.getElementById('image-popup');
+      popup.style.display = 'none';
+    }
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        openPopup(img.src);
+      });
+    });
+
+    const showStoriesButton = document.getElementById('show-stories-button');
+    showStoriesButton.addEventListener('click', () => {
+      const storiesSection = document.getElementById('stories-section');
+      storiesSection.style.display = 'block';
+    });
+
+    // Avvia l'audio quando l'utente clicca per la prima volta sul documento
+    const audioElement = document.getElementById('background-audio');
+    document.body.addEventListener('click', () => {
+      if (audioElement.paused) {
+        audioElement.play();
+      }
+    });
+  </script>
+
+</body>
+</html>
