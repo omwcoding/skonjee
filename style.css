@@ -10,6 +10,15 @@ body {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: inline-block;
+    max-width: 90%; /* Riduce i margini laterali su schermi piccoli */
+    width: 600px; /* Imposta una larghezza fissa su schermi più grandi */
+  }
+
+  @media (max-width: 600px) {
+    .container {
+        width: 100%; /* Su schermi molto piccoli usa tutta la larghezza disponibile */
+        padding: 10px; /* Riduce il padding */
+    }
   }
   
   img {
