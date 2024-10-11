@@ -13,13 +13,6 @@ function openPopup(imageSrc) {
   // Gestione clic sulle immagini della galleria
   document.querySelectorAll('.gallery img').forEach(img => {
     img.addEventListener('click', () => {
-      // Chiudi il popup della sezione avvistamenti se è aperto
-      /*
-      const storiesSection = document.getElementById('stories-section');
-      if (storiesSection.style.display === 'block') {
-        storiesSection.style.display = 'none'; // Nascondi le storie
-      }
-        */
       openPopup(img.src);
     });
   });
