@@ -1,25 +1,28 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 50px;
-  }
-  
-  .container {
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: inline-block;
-    max-width: 90%; /* Riduce i margini laterali su schermi piccoli */
-    width: 600px; /* Imposta una larghezza fissa su schermi più grandi */
-  }
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 0; /* Rimuove il padding su mobile */
+}
 
-  @media (max-width: 600px) {
-    .container {
-        width: 100%; /* Su schermi molto piccoli usa tutta la larghezza disponibile */
-        padding: 10px; /* Riduce il padding */
-    }
+.container {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  max-width: 100%; /* Aumenta la larghezza massima su dispositivi mobili */
+  width: 600px; /* Imposta una larghezza fissa su schermi più grandi */
+  box-sizing: border-box; /* Garantisce che il padding sia incluso nella larghezza */
+}
+
+@media (max-width: 600px) {
+  .container {
+      width: 100%; /* Usa tutta la larghezza disponibile su schermi piccoli */
+      padding: 10px; /* Riduce leggermente il padding su dispositivi mobili */
+      margin: 0; /* Elimina margini laterali */
   }
+}
+
   
   img {
     width: 200px;
