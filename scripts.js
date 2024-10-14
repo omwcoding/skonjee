@@ -3,24 +3,21 @@ function openPopup(imageSrc) {
   const popupImage = document.querySelector('.popup-image');
   popupImage.src = imageSrc;
   popup.style.display = 'flex';
-  popup.addEventListener('click', closePopup); // Aggiungi il listener per chiudere cliccando sullo sfondo
+  popup.addEventListener('click', closePopup);
 }
 
 function closePopup() {
   const popup = document.getElementById('image-popup');
   popup.style.display = 'none';
-  popup.removeEventListener('click', closePopup); // Rimuovi il listener per evitare conflitti
+  popup.removeEventListener('click', closePopup);
 }
 
-
-// Gestione clic sulle immagini della galleria
 document.querySelectorAll('.gallery img').forEach(img => {
   img.addEventListener('click', () => {
     openPopup(img.src);
   });
 });
 
-// Gestione clic sulle immagini delle friend card
 function enableFriendCardPopup() {
   document.querySelectorAll('.friend-card img').forEach(img => {
     img.addEventListener('click', () => {
@@ -29,20 +26,19 @@ function enableFriendCardPopup() {
   });
 }
 
-// Gestione clic sul bottone per mostrare le storie
 const showStoriesButton = document.getElementById('show-stories-button');
 showStoriesButton.addEventListener('click', () => {
   const storiesSection = document.getElementById('stories-section');
-  // Chiudi il popup se è aperto
   const popup = document.getElementById('image-popup');
+  
   if (popup.style.display === 'flex') {
     closePopup();
   }
-  storiesSection.style.display = 'block'; // Mostra le storie
-  enableFriendCardPopup(); // Abilita il popup sulle immagini delle friend card
+  
+  storiesSection.style.display = 'block';
+  enableFriendCardPopup();
 });
 
-// Avvia l'audio quando l'utente clicca per la prima volta sul documento
 const audioElement = document.getElementById('background-audio');
 
 document.body.addEventListener('click', (event) => {
@@ -54,10 +50,10 @@ document.body.addEventListener('click', (event) => {
   }
 });
 
-// Chiudi il popup se si clicca fuori dall'immagine
 const imagePopup = document.getElementById('image-popup');
 imagePopup.addEventListener('click', (event) => {
   const isImage = event.target.classList.contains('popup-image');
+  
   if (!isImage) {
     closePopup();
   }
