@@ -2,13 +2,16 @@ function openPopup(imageSrc) {
   const popup = document.getElementById('image-popup');
   const popupImage = document.querySelector('.popup-image');
   popupImage.src = imageSrc;
-  popup.style.display = 'flex'; // Mostra il popup
+  popup.style.display = 'flex';
+  popup.addEventListener('click', closePopup); // Aggiungi il listener per chiudere cliccando sullo sfondo
 }
 
 function closePopup() {
   const popup = document.getElementById('image-popup');
-  popup.style.display = 'none'; // Nasconde il popup
+  popup.style.display = 'none';
+  popup.removeEventListener('click', closePopup); // Rimuovi il listener per evitare conflitti
 }
+
 
 // Gestione clic sulle immagini della galleria
 document.querySelectorAll('.gallery img').forEach(img => {
@@ -48,5 +51,14 @@ document.body.addEventListener('click', (event) => {
 
   if (!isGalleryImage && !isShowStoriesButton && audioElement.paused) {
     audioElement.play();
+  }
+});
+
+// Chiudi il popup se si clicca fuori dall'immagine
+const imagePopup = document.getElementById('image-popup');
+imagePopup.addEventListener('click', (event) => {
+  const isImage = event.target.classList.contains('popup-image');
+  if (!isImage) {
+    closePopup();
   }
 });
