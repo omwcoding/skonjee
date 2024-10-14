@@ -136,3 +136,61 @@ img[alt="thisman"] {
   display: block;
   margin: 0 auto;
 }
+
+#balloon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Per evitare di interferire con altri elementi */
+  z-index: 100; /* Assegna un valore alto per assicurarti che i palloncini siano visibili sopra gli altri contenuti */
+}
+
+.balloon {
+  height: 125px;
+  width: 105px;
+  border-radius: 75% 75% 70% 70%;
+  position: absolute;
+  bottom: -150px; /* Partono fuori dalla vista */
+}
+
+.balloon:before {
+  content: "";
+  height: 100px; /* Lunghezza del cordino */
+  width: 1px;
+  background-color: #999; /* Colore del cordino */
+  position: absolute;
+  top: 125px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: wave 1.5s infinite ease-in-out; /* Animazione del cordino */
+}
+
+.balloon:after {
+  content: "▲"; /* Triangolino alla base del palloncino */
+  text-align: center;
+  display: block;
+  position: absolute;
+  color: inherit;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh) translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-300vh) translateX(10px); /* Leggera oscillazione */
+    opacity: 0;
+  }
+}
+
+@keyframes wave {
+  0% { transform: translateX(-50%) rotate(0deg); }
+  50% { transform: translateX(-50%) rotate(5deg); }
+  100% { transform: translateX(-50%) rotate(0deg); }
+}
