@@ -96,3 +96,50 @@ function generateBalloons() {
 }
 
 window.onload = generateBalloons;
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const matrixContainer = document.getElementById('matrix-container');
+  const mainContent = document.getElementById('main-content');
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  
+  function createCharacter() {
+      const span = document.createElement('span');
+      span.textContent = characters.charAt(Math.floor(Math.random() * characters.length));
+      span.style.position = 'absolute';
+      span.style.left = Math.random() * 100 + 'vw'; // Posizione orizzontale casuale
+      span.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`; // Durata casuale per ogni carattere
+      span.style.opacity = Math.random(); // Opacità casuale
+      matrixContainer.appendChild(span);
+      
+      // Rimuovi il carattere dopo che è caduto
+      setTimeout(() => {function createBalloon() {
+  const balloon = document.createElement('div');
+  balloon.classList.add('balloon');
+  
+  // Imposta una posizione casuale nella parte superiore della finestra
+  const left = Math.random() * 80 + 'vw';
+  balloon.style.left = left;
+  balloon.style.bottom = `-${Math.random() * 150 + 50}px`; // Posizione casuale sopra il bordo
+
+  balloon.style.cssText += getRandomStyles();
+  document.getElementById('balloon-container').appendChild(balloon);
+
+  setTimeout(() => {
+    balloon.remove();
+  }, 10000);
+}
+          span.remove();
+      }, 5000); // Rimuovi dopo 5 secondi
+  }
+
+  // Crea caratteri casuali a intervalli regolari
+  setInterval(createCharacter, 10); // Modifica l'intervallo se necessario
+
+  // Nascondi la schermata di caricamento e mostra il contenuto dopo 5 secondi
+  setTimeout(() => {
+    document.body.style.overflow = ''; // Ripristina lo scrolling
+    matrixContainer.style.display = 'none';
+    mainContent.style.display = 'block'; // Mostra il contenuto principale
+}, 5000);
+});
