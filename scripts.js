@@ -101,7 +101,7 @@ window.onload = generateBalloons;
 document.addEventListener("DOMContentLoaded", function() {
   const matrixContainer = document.getElementById('matrix-container');
   const mainContent = document.getElementById('main-content');
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const characters = 'SKONJEE';
   
   function createCharacter() {
       const span = document.createElement('span');
